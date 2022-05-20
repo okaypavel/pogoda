@@ -19,44 +19,18 @@
                 <th>OPADY [mm/h]</th>
                 <th>CIŚNIENIE [hPa]</th>
             </tr>
-            <tr>
-                <td>234</td>
-                <td></td>
-                <td>234</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>234</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>1235</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>123</td>
-                <td></td>
-            </tr>
-
+            <?php
+                $open = mysqli_connect('localhost', 'root', '', 'prognoza');
+                $zap1 = "SELECT * FROM pogoda WHERE miasta_id = 1";
+                mysqli_query($open, $zap1);
+                while ($work = mysqli_fetch_accos($zap1)) {
+                    echo '<tr><td>'.$work[1].'</td><td>'.$work[2].'</td><td>'.$work[3].'</td><td>'.$work[4].'</td><td>'.$work[5].'</td></tr>';
+                }
+                mysqli_close($open);
+            ?>
         </table>
     </div>
 
-    <?php
-    $open = mysqli_connect('localhost', 'root', '', 'prognoza');
-    $zap1 = "SELECT * FROM pogoda WHERE miasta_id = 1";
-    mysqli_query($open, $zap1);
-    mysqli_close($open);
-    ?>
 </body>
 
 </html>
